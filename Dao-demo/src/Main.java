@@ -5,9 +5,12 @@ import model.entities.Seller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
         System.out.println("=== Test1: Seller findById ===");
@@ -17,7 +20,7 @@ public class Main {
         System.out.println();
 
         System.out.println("=== Test2: Seller findByDepartment ===");
-        Department department = new Department(2, null);
+        Department department = new Department(3, null);
         List<Seller> list = sellerDao.findByDepartment(department);
         for(Seller obj : list){
             System.out.println(obj);
@@ -45,6 +48,16 @@ public class Main {
         seller.setName("Marta Waine");
         sellerDao.update(seller);
         System.out.println("Update completed");
+
+        System.out.println();
+
+        System.out.println("=== Test6: Seller Delete ===");
+        System.out.println("Enter id for delete test: ");
+        int id = sc.nextInt();
+        sellerDao.deleteById(id);
+        System.out.println("Delete completed!");
+
+        sc.close();
 
     }
 }
