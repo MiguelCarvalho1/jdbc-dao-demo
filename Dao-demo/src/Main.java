@@ -38,7 +38,13 @@ public class Main {
         sellerDao.insert(newSeller);
         System.out.println("Inserted! New id= " + newSeller.getId());
 
+        System.out.println();
 
+        System.out.println("=== Test5: Seller Update ===");
+        seller = sellerDao.findById(1);
+        seller.setName("Marta Waine");
+        sellerDao.update(seller);
+        System.out.println("Update completed");
 
     }
 }
